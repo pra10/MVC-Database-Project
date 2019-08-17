@@ -1,0 +1,34 @@
+﻿@model List< MVCTestingWithDatabase.Models.Student>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="jumbotron"><b class="text-success">Student Infomations :</b></h2>
+<p>@Html.ActionLink("Add New Student", "Create", "Home")</p>
+<br />
+
+
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>ROLL</th>
+            <th>NAME</th>
+            <th>COURSE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Roll</th>
+                <th>@item.Name</th>
+                <th>@item.Course</th>
+                <th>@Html.ActionLink("Detail","Details","Home",new { Id=@item.Roll},null)</th>
+                <th>@Html.ActionLink("Edit", "Edit", "Home", new { Id = @item.Roll }, null)</th>
+                <th>@Html.ActionLink("Delete", "Delete", "Home", new { Id = @item.Roll }, null)</th>
+            </tr>
+        }
+    </tbody>
+</table>
+

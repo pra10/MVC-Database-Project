@@ -1,0 +1,22 @@
+﻿@model MVCTestingWithDatabase.Models.Student
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details of Students</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <p>
+        Student Roll: @Html.DisplayTextFor(x => x.Roll)
+    </p>
+
+    <p>
+        Student Name: @Html.DisplayTextFor(x => x.Name)
+    </p>
+    <p>
+        Student Course: @Html.DisplayTextFor(x => x.Course)
+    </p>
+}
+
