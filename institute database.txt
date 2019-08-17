@@ -1,0 +1,100 @@
+create database institute
+
+use institute
+
+create table stu_tab(
+
+[Roll] [int] NOT NULL,
+[Name] [varchar](240) NOT NULL,
+[Course] [varchar](240) NOT NULL
+)
+
+
+
+Add Data------------------
+
+create procedure [dbo].[sp_addData](
+
+ @Roll int,
+ @Name nvarchar(250),
+  @Course nvarchar(250)
+)
+ 
+as
+begin
+INSERT INTO [dbo].[stu_tab]
+           (
+		    [Roll]
+		    ,[Name]
+                                       ,[Course])
+     VALUES
+           (
+		   @Roll,
+		   @Name,
+		   @Course
+		   )
+end
+
+
+Delete Data----------------
+
+create procedure [dbo].[sp_deleteDataByID](
+
+ @ID int
+)
+ 
+as
+begin
+
+delete from stu_tab where Roll=@ID
+end
+
+
+Edit Data-----------------
+
+create procedure [dbo].[sp_editData]
+(
+@Roll int,
+@Name nvarchar(250),
+@Course nvarchar(250)
+)
+as
+begin 
+
+UPDATE [dbo].[stu_tab]
+   SET 
+        [Name] = @Name, 
+        [Course] = @Course
+
+ WHERE [Roll]=@Roll
+
+ end
+
+
+
+Get Data------------------------
+
+CREATE PROCEDURE [dbo].[sp_getData]
+as
+
+   begin
+
+   select * from stu_tab
+
+end
+
+
+
+Get Data By ID-------------------------------
+
+create procedure [dbo].[sp_getDataByID](
+
+ @ID int
+)
+ 
+as
+begin
+
+select * from stu_tab where Roll=@ID
+end
+
