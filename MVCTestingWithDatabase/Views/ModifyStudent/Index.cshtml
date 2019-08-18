@@ -1,0 +1,58 @@
+﻿@model List<MVCTestingWithDatabase.Models.ModifyStudent>
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+
+<h2 class="jumbotron"><b class="text-success">Student Infomations :</b></h2>
+<p>@Html.ActionLink("Add New Student", "Create", "ModifyStudent")</p>
+<br />
+<hr />
+
+@grid.GetHtml(
+    tableStyle: "table table-responsive table-hover",
+    mode: WebGridPagerModes.All,
+    firstText: "<< First",
+    previousText: "< Previous",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]
+    {
+        grid.Column("ID"),
+        grid.Column("Name"),
+        grid.Column("Addresss"),
+        grid.Column("Course"),
+        grid.Column("Image"),
+        grid.Column("Image","Profile Pic",
+                             format:@<text><img src="@Url.Content(item.Image)" alt="@item.Name" height="100" width="100"/>  </text>
+
+        )
+    });
+
+
+
+@*<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>ROLL NO</th>
+            <th>NAME OF STUDENTS</th>
+            <th>ADDRESS</th>
+            <th>COURSE</th>
+            <th>IMAGE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.ID</th>
+                <th>@item.Name</th>
+                <th>@item.Addresss</th>
+                <th>@item.Course</th>
+                <th>@item.Image</th>
+                <th>@item.Image</th>
+            </tr>
+        }
+    </tbody>
+</table>*@

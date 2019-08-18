@@ -16,4 +16,5 @@ namespace MVCTestingWithDatabase.Models
         [Required(ErrorMessage = "Course field is required")]
         public string Course { get; set; }
     }
+
 }
